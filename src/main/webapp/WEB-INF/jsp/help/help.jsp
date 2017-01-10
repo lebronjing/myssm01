@@ -19,14 +19,25 @@
     margin-left: auto;  
     margin-right: auto;  
 }  
-</style>  
+</style>
+<script type="text/javascript">
+	function fileInput(val){
+		alert("excel导入");
+	}
+	function fileOutput(val){
+		alert("模板导出");
+	}
+	function pinyin(){
+		alert("汉字转拼音");
+	}
+</script>
 </head>
 <body>
 	<div class="btn-group-vertical btn-center">
-		<a class='btn btn-primary' href='javascript:;'>excel导入</a>
-		<a class='btn btn-danger' href='javascript:;'>word模板导出</a>
-		<a class='btn btn-warning' href='javascript:;'>excel模板导出</a>
-		<a class='btn btn-success' href='javascript:;'>汉字转拼音</a>
+		<a class='btn btn-primary' onclick="window.location.href='fileInput.do?val=1';">excel导入</a>
+		<a class='btn btn-danger' onclick="fileOutput(1);">word模板导出</a>
+		<a class='btn btn-warning' onclick="fileOutput(2);">excel模板导出</a>
+		<a class='btn btn-success' onclick="pinyin();">汉字转拼音</a>
 	</div>
 </body>
 </html>
