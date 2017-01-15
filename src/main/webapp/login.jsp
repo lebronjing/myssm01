@@ -9,5 +9,6 @@
 </head>
 <body>
 <div align="center"><h1>欢迎来到我的springmvc+spring+mybatis整合</h1></div>
+<div align="center"><button><a href="help.do">进入帮助页面</a></button></div>
 </body>
 </html>
