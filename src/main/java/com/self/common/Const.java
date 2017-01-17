@@ -17,4 +17,8 @@ public class Const {
 	public static final String UPLOAD_IMG_FOLDER = "ImgFolder"+File.separator;
 	/**临时目录名称**/
 	public static final String TEMP_PATH = "temp" + File.separator;
+	/**2003- 版本的excel **/
+	public final static String EXCEL2003L =".xls";
+	/**2007+ 版本的excel **/
+	public final static String EXCEL2007U =".xlsx";
 }
