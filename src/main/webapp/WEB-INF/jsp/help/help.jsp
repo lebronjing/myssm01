@@ -21,9 +21,6 @@
 }  
 </style>
 <script type="text/javascript">
-	function fileInput(val){
-		alert("excel导入");
-	}
 	function fileOutput(val){
 		alert("模板导出");
 	}

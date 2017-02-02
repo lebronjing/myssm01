@@ -52,7 +52,7 @@ public class ExcelReadControll {
         try {
         	//使用spring中FileCopyUtils.copy方法保存文件
 			FileCopyUtils.copy(uploadFile.getBytes(), tempFullFile);
-			//获取excel内容进行处理
+			//获取excel内容进行处理 格式参考modelfile文件夹下格式文件
 			//List<String[]> data = ExcelReadUtil.getDataToJxl(tempFullFile, 4, 1);
 			List<String[]> data = ExcelReadUtil.getDataToPoi(tempFullFile,fileName, 4, 1);
 			for (String[] strings : data) {
