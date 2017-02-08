@@ -22,7 +22,25 @@
 </style>
 <script type="text/javascript">
 	function fileOutput(val){
-		alert("模板导出");
+		if(val == "1"){
+			$.ajax({
+	            type: "GET",
+	            url: "wordOut.do",
+	            dataType: "json",
+	            success: function(data){
+	               
+	            }
+         	});
+		}else if(val == "2"){
+			$.ajax({
+	            type: "GET",
+	            url: "excelOut.do",
+	            dataType: "json",
+	            success: function(data){
+	               
+	            }
+         	});
+		}
 	}
 	function pinyin(){
 		alert("汉字转拼音");
