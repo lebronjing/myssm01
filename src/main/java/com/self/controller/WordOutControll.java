@@ -27,7 +27,7 @@ import freemarker.template.Template;
 @RequestMapping("/")
 public class WordOutControll {
 	@RequestMapping(value="wordOut.do")
-	public void excelOut(HttpServletRequest req,HttpServletResponse resp,HttpSession session) throws Exception{
+	public void excelOut(HttpServletRequest req,HttpServletResponse resp,HttpSession session) throws Exception {
 		resp.setContentType("text/html;charset=utf-8");
 		
 		BufferedInputStream bis = null;
@@ -67,7 +67,7 @@ public class WordOutControll {
 	}
 	
 	
-	public static Writer getScoreWord(HttpServletRequest req) throws Exception{
+	public static Writer getScoreWord(HttpServletRequest req) throws Exception {
 		Map<String,Object> dataMap = new HashMap<String,Object>();
 		
 		dataMap.put("xm", "测试");

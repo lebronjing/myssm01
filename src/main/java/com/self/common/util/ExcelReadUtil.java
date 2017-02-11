@@ -30,7 +30,7 @@ public class ExcelReadUtil {
 	 * @cellNum列数 
 	 * @rowsNum 行数（从第几行开始循环）
 	 * **/
-	public static List<String[]> getDataToJxl(File file,int cellNum,int rowsNum) throws Exception{
+	public static List<String[]> getDataToJxl(File file, int cellNum, int rowsNum) throws Exception {
 		List<String[]> dataList = new ArrayList<String[]>();
 		Sheet sheet;
 		Workbook book = Workbook.getWorkbook(file);
@@ -63,10 +63,10 @@ public class ExcelReadUtil {
 	 * @cellNum列数 
 	 * @rowsNum 行数（从第几行开始循环）
 	 * **/
-	public static List<String[]> getDataToPoi(File file,String fileName,int cellNum,int rowsNum) throws Exception {
-		if(StringUtil.StringIsNull(fileName)){
+	public static List<String[]> getDataToPoi(File file, String fileName, int cellNum, int rowsNum) throws Exception {
+		if(StringUtil.StringIsNull(fileName)) {
 			return null;
-		}else{
+		} else {
 			String fileType = fileName.substring(fileName.lastIndexOf("."));
 			if(Const.EXCEL2003L.equals(fileType)){  
 	           return readXls(file,cellNum,rowsNum);  //2003-  
@@ -80,7 +80,7 @@ public class ExcelReadUtil {
 	/**
 	 * 读取excel 2003及以下版本
 	 * **/
-	public static List<String[]> readXls(File file,int cellNum,int rowsNum) throws IOException {
+	public static List<String[]> readXls(File file, int cellNum, int rowsNum) throws IOException {
 		List<String[]> dataList = new ArrayList<String[]>();
 		InputStream is = new FileInputStream(file);
         HSSFWorkbook hssfWorkbook = new HSSFWorkbook(is);
@@ -104,7 +104,7 @@ public class ExcelReadUtil {
 	/**
 	 * 读取excel 2007及以上版本
 	 * **/
-	public static List<String[]> readXlsx(File file,int cellNum,int rowsNum) throws IOException {
+	public static List<String[]> readXlsx(File file, int cellNum, int rowsNum) throws IOException {
 		List<String[]> dataList = new ArrayList<String[]>();
 		InputStream is = new FileInputStream(file);
 		XSSFWorkbook xssfWorkbook = new XSSFWorkbook(is);
