@@ -50,4 +50,8 @@ public class User implements Serializable {
 		this.birthday = birthday;
 	}
 	
+	@Override
+	public String toString() {
+		return "用户名：" + username;
+	}
 }

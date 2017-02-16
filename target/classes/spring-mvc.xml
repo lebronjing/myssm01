@@ -47,53 +47,5 @@
 		<!-- 内存中的最大值 -->
 		<property name="maxInMemorySize" value="40960" />
 	</bean>
-	
-	<!-- SpringMVC配置多视图-内容协商原理 -->
-	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
-		<!-- 设置为true以忽略对Accept Header的支持 -->
-		<property name="ignoreAcceptHeader" value="true" />
-		<!-- 在没有扩展名时即: "/user/getUser" 时的默认展现形式 -->
-		<property name="defaultContentType" value="text/html" />
-
-		<!-- 扩展名至mimeType的映射,即 /getUser.json => application/json -->
-		<property name="mediaTypes">
-			<map>
-				<entry key="json" value="application/json" />
-				<entry key="xml" value="application/xml" />
-			</map>
-		</property>
-		<!-- 用于开启 /user/getUser?format=json 的支持 -->
-		<property name="favorParameter" value="false" />
-		<property name="viewResolvers">
-			<list>
-				<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
-				<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-					<property name="viewClass"
-						value="org.springframework.web.servlet.view.JstlView" />
-					<property name="prefix" value="/WEB-INF/jsp/" />
-					<property name="suffix" value=".jsp"></property>
-				</bean>
-			</list>
-		</property>
-		<property name="defaultViews">
-			<list>
-				<!-- for application/json -->
-				<bean class="com.self.view.CustomJsonView" />
-				<!-- for application/xml -->
-				<bean class="org.springframework.web.servlet.view.xml.MarshallingView">
-					<property name="marshaller">
-						<!-- xstream.XStreamMarshaller -->
-						<bean class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
-							<property name="classesToBeBound" >
-								<list>
-									<value>com.self.domain.User</value>
-								</list>
-							</property>
-						</bean> 
-					</property>
-				</bean>
-			</list>
-		</property>
-	</bean>
 
 </beans>

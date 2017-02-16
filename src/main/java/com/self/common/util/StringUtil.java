@@ -19,20 +19,20 @@ import com.self.common.Const;
  * **/
 public class StringUtil {
 	/**判断是否为空**/
-	public static boolean StringIsNull(String s) {
-		if(s == null || Const.empty.equals(s)) {
+	public static boolean StringIsNull(String s){
+		if(s == null || Const.empty.equals(s)){
 			return true;
 		}
 		return false;
 	}
 	
 	/**将上传文件转为File类型**/
-	public static File getFile(CommonsMultipartFile uploadFile) {
+	public static File getFile(CommonsMultipartFile uploadFile){
 		DiskFileItem fi = (DiskFileItem) uploadFile.getFileItem();
 		return fi.getStoreLocation();
 	}
 	/**获取文件保存到本地路径**/
-	public static String getOutPath(String rootPath,String fileName) {
+	public static String getOutPath(String rootPath,String fileName){
 		// 保存上传文件到缓存目录
 		String tempFullPath = rootPath + Const.EXCEL_FOLDER+ Const.TEMP_PATH;
 		//判断文件夹是否存在  
@@ -46,14 +46,14 @@ public class StringUtil {
 	}
 	
 	/**获取文件上传根目录-与项目相同级的目录 **/
-	public static String getRootExcelPath(HttpSession session,HttpServletRequest request) {
+	public static String getRootExcelPath(HttpSession session,HttpServletRequest request){
 		//项目根路径
 		String rootPath = request.getSession().getServletContext().getRealPath("/");
 		return getRootExcelPath(rootPath,request);
 	}
 	
 	/**获取文件上传根目录-与项目相同级的目录**/
-	public static String getRootExcelPath(String rootPath,HttpServletRequest request) {
+	public static String getRootExcelPath(String rootPath,HttpServletRequest request){
 		//获取项目名
 		String contextPath = request.getContextPath();
 		contextPath = contextPath.substring(1,contextPath.length());
@@ -82,7 +82,7 @@ public class StringUtil {
 	 * 比较list1跟list2不相同的数据
 	 * 循环遍历list数据多的
 	 * **/
-	public static List<String> getUncontain(List<String> list1,List<String> list2) {
+	public static List<String> getUncontain(List<String> list1,List<String> list2){
 		List<String> uncheckList = new ArrayList<String>();
 		
 		for (String str1 : list1) {
@@ -96,7 +96,7 @@ public class StringUtil {
 	/**
 	 * 获取本机ip地址
 	 * **/
-	public static String getIp() {
+	public static String getIp(){
 		String ip = null;
 		try {
 			ip = InetAddress.getLocalHost().getHostAddress();

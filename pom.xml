@@ -207,6 +207,19 @@
 		    <version>3.9</version>
 		</dependency>
 		
+		<!-- https://mvnrepository.com/artifact/org.activiti/activiti-engine -->
+		<dependency>
+		    <groupId>org.activiti</groupId>
+		    <artifactId>activiti-engine</artifactId>
+		    <version>5.22.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.activiti/activiti-spring -->
+		<dependency>
+		    <groupId>org.activiti</groupId>
+		    <artifactId>activiti-spring</artifactId>
+		    <version>5.22.0</version>
+		</dependency>
+					
 		
 	</dependencies>
 </project>

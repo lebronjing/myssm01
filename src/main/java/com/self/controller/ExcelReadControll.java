@@ -26,11 +26,11 @@ public class ExcelReadControll {
 	private static Logger logger = Logger.getLogger(ExcelReadControll.class);
 	
 	@RequestMapping(value="help.do")
-	public ModelAndView help() {
+	public ModelAndView help(){
 		return new ModelAndView("help/help");
 	}
 	@RequestMapping(value="fileInput.do")
-	public ModelAndView FileInput(String val) {
+	public ModelAndView FileInput(String val){
 		return new ModelAndView("help/fileInput");
 	}
 	@RequestMapping(value="excelInput.do")
@@ -54,7 +54,7 @@ public class ExcelReadControll {
 			FileCopyUtils.copy(uploadFile.getBytes(), tempFullFile);
 			//获取excel内容进行处理 格式参考modelfile文件夹下格式文件
 			//List<String[]> data = ExcelReadUtil.getDataToJxl(tempFullFile, 4, 1);
-			List<String[]> data = ExcelReadUtil.getDataToPoi(tempFullFile, fileName, 4, 1);
+			List<String[]> data = ExcelReadUtil.getDataToPoi(tempFullFile,fileName, 4, 1);
 			for (String[] strings : data) {
 				System.out.println(strings);
 			}
