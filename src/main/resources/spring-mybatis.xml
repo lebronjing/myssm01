@@ -3,19 +3,28 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+  	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans  
-                        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd  
+                        http://www.springframework.org/schema/beans/spring-beans.xsd  
                         http://www.springframework.org/schema/context  
-                        http://www.springframework.org/schema/context/spring-context-3.1.xsd  
+                        http://www.springframework.org/schema/context/spring-context.xsd  
                         http://www.springframework.org/schema/mvc  
-                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
-	<!-- 自动扫描 -->
-	<context:component-scan base-package="com.self" />
+                        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+                        http://www.springframework.org/schema/tx
+					  	http://www.springframework.org/schema/tx/spring-tx.xsd
+					  	http://www.springframework.org/schema/aop
+					  	http://www.springframework.org/schema/aop/spring-aop.xsd">
+	<!-- 自动扫描组件，这里要把controler下面的 controller去除，他们是在spring3-servlet.xml中配置的，如果不去除会影响事务管理的。   -->
+	<context:component-scan base-package="com.self">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
 	<!-- 引入配置文件 -->
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location" value="classpath:jdbc.properties" />
 	</bean>
+	<!--数据源配置-->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="${jdbc.driverClassName}" />
@@ -39,6 +48,18 @@
 		<property name="dataSource" ref="dataSource" />
 		<!-- 自动扫描mapping.xml文件 -->
 		<property name="mapperLocations" value="classpath:com/self/mapping/*.xml"></property>
+		<!-- 配置分页拦截器 -->
+		<property name="plugins">
+			<array>
+				<bean class="com.github.pagehelper.PageHelper">
+					<property name="properties">
+				        <value>
+				        	dialect=mysql
+				        </value>
+			        </property>
+				</bean>
+			</array>
+		</property>
 	</bean>
 
 	<!-- DAO接口所在包名，Spring会自动查找其下的类 -->
@@ -52,5 +73,20 @@
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-
+	
+	<!--使用注解事务-->  
+    <!--<tx:annotation-driven transaction-manager="transactionManager" />-->
+	
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+	    <tx:attributes>  
+            <tx:method name="*" propagation="REQUIRED" rollback-for="Throwable"/>  
+        </tx:attributes>
+  	</tx:advice>
+      
+  	<aop:config>
+  		<!--把事务控制在Service层-->
+    	<aop:pointcut id="serviceImpl" expression="execution(* com.self.service.impl.UserServiceImpl.*(..))"/>
+    	<aop:advisor pointcut-ref="serviceImpl" advice-ref="txAdvice" />
+  	</aop:config>
+	
 </beans>

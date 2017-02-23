@@ -1,57 +1,75 @@
 package com.self.domain;
 
-import java.io.Serializable;
+import java.util.Date;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-@XmlRootElement(name="User")
-public class User implements Serializable {
+public class User {
+    private int id;
 
-	private static final long serialVersionUID = 1L;
-	
-	private String username;
-	private String password;
-	private int age;
-	private String sex;
-	private String birthday;
-	@XmlElement
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	@XmlElement
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	@XmlElement
-	public int getAge() {
-		return age;
-	}
-	public void setAge(int age) {
-		this.age = age;
-	}
-	@XmlElement
-	public String getSex() {
-		return sex;
-	}
-	public void setSex(String sex) {
-		this.sex = sex;
-	}
-	@XmlElement
-	public String getBirthday() {
-		return birthday;
-	}
-	public void setBirthday(String birthday) {
-		this.birthday = birthday;
-	}
-	
-	@Override
-	public String toString() {
-		return "用户名：" + username;
-	}
+    private String name;
+
+    private String pwd;
+
+    private Date creatTime;
+
+    private String creatBy;
+
+    private Date updateTime;
+
+    private String updateBy;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
+    }
+
+    public String getPwd() {
+        return pwd;
+    }
+
+    public void setPwd(String pwd) {
+        this.pwd = pwd == null ? null : pwd.trim();
+    }
+
+    public Date getCreatTime() {
+        return creatTime;
+    }
+
+    public void setCreatTime(Date creatTime) {
+        this.creatTime = creatTime;
+    }
+
+    public String getCreatBy() {
+        return creatBy;
+    }
+
+    public void setCreatBy(String creatBy) {
+        this.creatBy = creatBy == null ? null : creatBy.trim();
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public String getUpdateBy() {
+        return updateBy;
+    }
+
+    public void setUpdateBy(String updateBy) {
+        this.updateBy = updateBy == null ? null : updateBy.trim();
+    }
 }

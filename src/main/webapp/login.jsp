@@ -1,14 +1,72 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>欢迎</title>
-<link href="css/style.css" rel="stylesheet" type="text/css" />
+<base href="<%=basePath%>">
+<link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+<link rel="stylesheet" href="css/login.css">
+<link rel="stylesheet" href="bootstrapvalidator/bootstrapValidator.css"/>
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="js/jquery/jquery-1.12.2.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="js/bootstrap/bootstrap.min.js"></script>
+<script type="text/javascript" src="bootstrapvalidator/bootstrapValidator.js"></script>
+<script type="text/javascript" src="bootstrapvalidator/zh_CN.js"></script>
 </head>
 <body>
-<div align="center"><h1>欢迎来到我的springmvc+spring+mybatis整合</h1></div>
-<div align="center"><button><a href="help.do">进入帮助页面</a></button></div>
+	<div class="box">
+			<div class="login-box">
+				<div class="login-title text-center">
+					<h1><small>登录页面</small></h1>
+				</div>
+				<div class="login-content ">
+				<div class="form">
+				<form action="login.do" method="post">
+					<div class="form-group">
+						<div class="col-xs-12  ">
+							<div class="input-group">
+								<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+								<input type="text" id="username" name="username" class="form-control" placeholder="用户名">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-xs-12  ">
+							<div class="input-group">
+								<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+								<input type="text" id="password" name="password" class="form-control" placeholder="密码">
+							</div>
+						</div>
+					</div>
+					<div class="form-group form-actions">
+						<div class="col-xs-4 col-xs-offset-4 ">
+							<button type="submit" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-off"></span> 登录</button>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-xs-6 link">
+							<p class="text-center remove-margin"><small>忘记密码？</small> <a href="javascript:void(0)" ><small>找回</small></a>
+							</p>
+						</div>
+						<div class="col-xs-6 link">
+							<p class="text-center remove-margin"><small>还没注册?</small> <a href="javascript:void(0)" ><small>注册</small></a>
+							</p>
+						</div>
+					</div>
+				</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="text-align:center;">
+		<p>帮助页面：<a href="help.do"  target="_blank">进入帮助页面</a></p>
+	</div>
 </body>
 </html>

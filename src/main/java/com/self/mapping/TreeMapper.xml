@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.self.IDao.ITreeDao" >
+  <resultMap id="BaseResultMap" type="com.self.domain.Tree" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="pid" property="pid" jdbcType="VARCHAR" />
+    <result column="order_id" property="orderId" jdbcType="VARCHAR" />
+    <result column="is_delete" property="isDelete" jdbcType="CHAR" />
+    <result column="level_id" property="levelId" jdbcType="CHAR" />
+    <result column="create_time" property="createTime" jdbcType="DATE" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="DATE" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="context" property="context" jdbcType="VARCHAR" />
+    <result column="tree_type" property="treeType" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    id, name, pid, order_id, is_delete, level_id, create_time, create_by, update_time, 
+    update_by, context, tree_type
+  </sql>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_tree
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_tree
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  
+  <insert id="insert" parameterType="com.self.domain.Tree" >
+    insert into t_tree (id, name, pid, 
+      order_id, is_delete, level_id, 
+      create_time, create_by, update_time, 
+      update_by, context, tree_type
+      )
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{pid,jdbcType=VARCHAR}, 
+      #{orderId,jdbcType=VARCHAR}, #{isDelete,jdbcType=CHAR}, #{levelId,jdbcType=CHAR}, 
+      #{createTime,jdbcType=DATE}, #{createBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=DATE}, 
+      #{updateBy,jdbcType=VARCHAR}, #{context,jdbcType=VARCHAR}, #{treeType,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.self.domain.Tree" >
+    insert into t_tree
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="levelId != null" >
+        level_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="updateBy != null" >
+        update_by,
+      </if>
+      <if test="context != null" >
+        context,
+      </if>
+      <if test="treeType != null" >
+        tree_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=CHAR},
+      </if>
+      <if test="levelId != null" >
+        #{levelId,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="context != null" >
+        #{context,jdbcType=VARCHAR},
+      </if>
+      <if test="treeType != null" >
+        #{treeType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.self.domain.Tree" >
+    update t_tree
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=CHAR},
+      </if>
+      <if test="levelId != null" >
+        level_id = #{levelId,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="updateBy != null" >
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="context != null" >
+        context = #{context,jdbcType=VARCHAR},
+      </if>
+      <if test="treeType != null" >
+        tree_type = #{treeType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.self.domain.Tree" >
+    update t_tree
+    set name = #{name,jdbcType=VARCHAR},
+      pid = #{pid,jdbcType=VARCHAR},
+      order_id = #{orderId,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=CHAR},
+      level_id = #{levelId,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=DATE},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=DATE},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      context = #{context,jdbcType=VARCHAR},
+      tree_type = #{treeType,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
