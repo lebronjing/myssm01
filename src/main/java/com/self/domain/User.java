@@ -3,7 +3,7 @@ package com.self.domain;
 import java.util.Date;
 
 public class User {
-    private int id;
+    private String id;
 
     private String name;
 
@@ -17,11 +17,11 @@ public class User {
 
     private String updateBy;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

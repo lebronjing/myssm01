@@ -24,6 +24,9 @@
   </delete>
   
   <insert id="insert" parameterType="com.self.domain.RoleMenu" >
+  <selectKey keyProperty="id" resultType="String" order="BEFORE">
+            select replace(uuid(),'-','') from dual
+        </selectKey>
     insert into t_role_menu (id, role_id, menu_id, 
       status)
     values (#{id,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, #{menuId,jdbcType=VARCHAR}, 

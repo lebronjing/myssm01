@@ -20,6 +20,9 @@
     where id = #{id,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.self.domain.User" >
+  		<selectKey keyProperty="id" resultType="String" order="BEFORE">
+            select replace(uuid(),'-','') from dual
+        </selectKey>
     insert into t_user (id, name, pwd, 
       creat_time, creat_by, update_time, 
       update_by)

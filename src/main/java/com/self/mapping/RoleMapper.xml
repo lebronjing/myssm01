@@ -26,6 +26,9 @@
   </delete>
   
   <insert id="insert" parameterType="com.self.domain.Role" >
+  <selectKey keyProperty="id" resultType="String" order="BEFORE">
+            select replace(uuid(),'-','') from dual
+        </selectKey>
     insert into t_role (id, name, create_time, 
       create_by, update_time, update_by
       )
